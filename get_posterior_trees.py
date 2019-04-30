@@ -72,7 +72,7 @@ if __name__ == "__main__":
     n_keep_per_file = int(math.ceil(args.keep/float(nfiles))) #k/(number of input files)
     
     burnin = int(math.ceil(args.burnin/100.0 * ntrees_per_file)) #number of trees to eliminate as burnin
-    thinning = min(1,int(math.floor((float(ntrees_per_file) - burnin) / n_keep_per_file))) #to get sample tree every thinning# trees
+    thinning = max(1,int(math.floor((float(ntrees_per_file) - burnin) / n_keep_per_file))) #to get sample tree every thinning# trees
     #if thinning==0: thinning = thinning + 1 #for when math.floor leads to thinning = 0
     
     #if number of trees to keep is multiple of number of files, this results in the exact number of trees, with at least the specified burnin
